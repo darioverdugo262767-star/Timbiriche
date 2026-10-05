@@ -15,27 +15,31 @@ import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import modelo.IConsultaModelo;
+import modelo.Observador;
 
 /**
  *
  * @author Dario
  */
-public class MarcadorView extends javax.swing.JPanel {
+public class MarcadorView extends javax.swing.JPanel implements Observador {
+
+    private IConsultaModelo modelo;
 
     public MarcadorView(int numJugadores) {
         setBackground(Color.BLACK);
         setLayout(new BorderLayout(10, 10));
-        
-        JPanel tarjetaPepe  = crearTarjetaJugador("Pepe", "0", Color.RED);
-        JPanel tarjetaJuan  = crearTarjetaJugador("Juan", "0", new Color(130, 230, 0));
+
+        JPanel tarjetaPepe = crearTarjetaJugador("Pepe", "0", Color.RED);
+        JPanel tarjetaJuan = crearTarjetaJugador("Juan", "0", new Color(130, 230, 0));
         JPanel tarjetaJorge = crearTarjetaJugador("Jorge", "0", Color.YELLOW);
         JPanel tarjetaMaria = crearTarjetaJugador("Maria", "0", Color.BLUE);
 
-        JPanel jugadorArribaDer  = (numJugadores >= 3) ? tarjetaJuan : null;
-        JPanel jugadorAbajoIzq   = (numJugadores == 4) ? tarjetaJorge : null;
+        JPanel jugadorArribaDer = (numJugadores >= 3) ? tarjetaJuan : null;
+        JPanel jugadorAbajoIzq = (numJugadores == 4) ? tarjetaJorge : null;
 
         JPanel panelNorte = crearFilaControl(tarjetaPepe, crearBotonControl("🚪"), jugadorArribaDer);
-        JPanel panelSur   = crearFilaControl(jugadorAbajoIzq, crearBotonControl("🚩"), tarjetaMaria);
+        JPanel panelSur = crearFilaControl(jugadorAbajoIzq, crearBotonControl("🚩"), tarjetaMaria);
 
         add(panelNorte, BorderLayout.NORTH);
         add(panelSur, BorderLayout.SOUTH);
@@ -47,15 +51,21 @@ public class MarcadorView extends javax.swing.JPanel {
 
         JPanel colIzq = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 0));
         colIzq.setOpaque(false);
-        if (izq != null) colIzq.add(izq);
+        if (izq != null) {
+            colIzq.add(izq);
+        }
 
         JPanel colCentro = new JPanel(new FlowLayout(FlowLayout.CENTER, 0, 0));
         colCentro.setOpaque(false);
-        if (centro != null) colCentro.add(centro);
+        if (centro != null) {
+            colCentro.add(centro);
+        }
 
         JPanel colDer = new JPanel(new FlowLayout(FlowLayout.RIGHT, 0, 0));
         colDer.setOpaque(false);
-        if (der != null) colDer.add(der);
+        if (der != null) {
+            colDer.add(der);
+        }
 
         panelFila.add(colIzq);
         panelFila.add(colCentro);
@@ -84,14 +94,14 @@ public class MarcadorView extends javax.swing.JPanel {
             protected void paintComponent(Graphics g) {
                 Graphics2D g2 = (Graphics2D) g;
                 g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-                
+
                 g2.setColor(Color.WHITE);
                 g2.fillOval(0, 0, getWidth(), getHeight());
-                
+
                 g2.setColor(Color.DARK_GRAY);
                 g2.setStroke(new BasicStroke(1.5f));
                 g2.drawOval(0, 0, getWidth() - 1, getHeight() - 1);
-                
+
                 super.paintComponent(g2);
             }
         };
@@ -152,6 +162,15 @@ public class MarcadorView extends javax.swing.JPanel {
             .addGap(0, 300, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    public void setModelo(IConsultaModelo modelo) {
+        this.modelo = modelo;
+    }
+
+    @Override
+    public void actualizar() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

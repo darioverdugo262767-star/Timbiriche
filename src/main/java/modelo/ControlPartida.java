@@ -24,11 +24,11 @@ public class ControlPartida {
         yPuntoSeleccionado = null;
     }
 
-    public Linea actualizar(int x, int y) {
+    public void realizarJugada(int x, int y) {
 
         if (partida == null) {
 
-            return null;
+            return;
 
         }
 
@@ -37,7 +37,7 @@ public class ControlPartida {
             xPuntoSeleccionado = x;
             yPuntoSeleccionado = y;
 
-            return null;
+            return;
 
         }
 
@@ -46,7 +46,7 @@ public class ControlPartida {
             xPuntoSeleccionado = null;
             yPuntoSeleccionado = null;
 
-            return null;
+            return;
 
         }
 
@@ -62,8 +62,6 @@ public class ControlPartida {
         } else {
             cambiarTurno();
         }
-
-        return lineaCreada;
 
     }
 
@@ -95,6 +93,10 @@ public class ControlPartida {
 
         jugadorActual.setPuntuacion(jugadorActual.getPuntuacion() + puntos);
 
+    }
+
+    public Partida getPartida() {
+        return partida;
     }
 
 }

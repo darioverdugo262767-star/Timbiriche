@@ -1,16 +1,22 @@
 package Vista;
 
+import controlador.Controlador;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
+import modelo.IConsultaModelo;
+import modelo.Observador;
 
 /**
  *
  * @author Dario
  */
-public class TableroView extends javax.swing.JPanel {
+public class TableroView extends javax.swing.JPanel implements Observador{
+
+    private Controlador controlador;
+    private IConsultaModelo modelo;
 
     private final int FILAS_NODOS = 10;
     private final int COLUMNAS_NODOS = 10;
@@ -25,7 +31,7 @@ public class TableroView extends javax.swing.JPanel {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
-        
+
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
         int anchoPintable = getWidth() - (2 * MARGEN);
@@ -46,7 +52,7 @@ public class TableroView extends javax.swing.JPanel {
             }
         }
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -62,6 +68,19 @@ public class TableroView extends javax.swing.JPanel {
             .addGap(0, 300, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    public void setControlador(Controlador controlador) {
+        this.controlador = controlador;
+    }
+
+    public void setModelo(IConsultaModelo modelo) {
+        this.modelo = modelo;
+    }
+
+    @Override
+    public void actualizar() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
