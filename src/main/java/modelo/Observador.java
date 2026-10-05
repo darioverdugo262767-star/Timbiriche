@@ -1,15 +1,15 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
- */
 package modelo;
 
 /**
- *
- * @author amacias
+ * Interfaz con los metodos de los observers.
+ * @author jesus
  */
 public interface Observador {
 
+    /*
+    Metodo que notifica cuando algo cambia en el modelo, 
+    las clases suscritas lo utilizan para redibujar elementos.
+    */
     void actualizar();
-
+    
 }
