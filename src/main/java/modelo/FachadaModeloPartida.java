@@ -1,5 +1,6 @@
 package modelo;
 
+import Observer.SujetoObservado;
 import java.awt.Color;
 import java.util.Collections;
 import java.util.List;

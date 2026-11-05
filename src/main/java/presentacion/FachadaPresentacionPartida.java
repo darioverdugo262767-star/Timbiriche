@@ -3,8 +3,8 @@ package presentacion;
 import java.awt.Color;
 import java.awt.Point;
 import java.util.List;
-import modelo.Observador;
-import modelo.SujetoObservado;
+import Observer.Observador;
+import Observer.SujetoObservado;
 
 /**
  * Puente entre Vista/Controlador y Modelo. Reenvia las notificaciones Observer

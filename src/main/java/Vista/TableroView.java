@@ -12,7 +12,7 @@ import java.awt.RenderingHints;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JPanel;
-import modelo.Observador;
+import Observer.Observador;
 import presentacion.CuadroVista;
 import presentacion.IConsultaModelo;
 import presentacion.LineaVista;

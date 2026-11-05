@@ -19,7 +19,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import presentacion.IConsultaModelo;
 import presentacion.JugadorVista;
-import modelo.Observador;
+import Observer.Observador;
 
 /**
  * Vista de marcador que despliega informacion sobre el marcador / los cuadros
