@@ -34,10 +34,6 @@ public final class ControlPresentacionPartida {
     }
 
     public List<JugadorVista> obtenerVistaMarcador() {
-        return prepararMarcador();
-    }
-
-    public List<JugadorVista> prepararMarcador() {
         List<JugadorVista> resultado = new ArrayList<>();
         for (Jugador j : consultaModelo.getJugadores()) {
             resultado.add(new JugadorVista(j.getNombre(), j.getColor(), j.getPuntuacion(),
@@ -151,10 +147,6 @@ public final class ControlPresentacionPartida {
     }
 
     public String obtenerResultado() {
-        return prepararScore();
-    }
-
-    public String prepararScore() {
         if (!consultaModelo.estaFinalizada()) {
             return "Partida en curso";
         }
