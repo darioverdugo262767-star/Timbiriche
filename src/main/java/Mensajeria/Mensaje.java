@@ -25,9 +25,9 @@ public class Mensaje {
 
     /** Permite que Broker y GestorDirectorio envien mensajes administrativos. */
     public Mensaje(TipoMensaje tipo, String destinatario, String contenido) {
-        this.tipo = java.util.Objects.requireNonNull(tipo, "tipo");
-        this.destinatario = java.util.Objects.requireNonNull(destinatario, "destinatario");
-        this.contenido = java.util.Objects.requireNonNull(contenido, "contenido");
+        this.tipo = tipo;
+        this.destinatario = destinatario;
+        this.contenido = contenido;
     }
 
     // Constructor interno para reconstruir mensajes recibidos
@@ -45,8 +45,8 @@ public class Mensaje {
         this.contenido = contenido;
     }
 
-    // Solo accesible desde el paquete mensajeria
-    void completar(String remitente, DireccionFisica local,
+    
+    public void completar(String remitente, DireccionFisica local,
                    DireccionFisica destino) {
         this.remitente = remitente;
         this.ipRemitente = local.getIp();

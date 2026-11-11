@@ -19,13 +19,6 @@ public class Buzon {
         }
     }
 
-    /**
-     * Se conserva para que otros usos anteriores sigan compilando.
-     */
-    public void entregar(String remitente, String contenido) {
-        entregar(contenido);
-    }
-
     public String recibir(long esperaMs) throws InterruptedException {
         return mensajes.tomar(esperaMs);
     }
