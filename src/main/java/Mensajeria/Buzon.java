@@ -7,17 +7,23 @@ import Libreria.ColaGenerica;
  * @author Dario
  */
 public class Buzon {
+
     private final ColaGenerica<String> mensajes = new ColaGenerica<>();
 
-    public void entregar(String remitente, String contenido) {
+    public void entregar(String contenido) {
         try {
-            mensajes.agregar("De " + remitente + ": " + contenido);
+            mensajes.agregar(contenido);
         } catch (InterruptedException ex) {
             Thread.currentThread().interrupt();
-            throw new IllegalStateException(
-                    "Se interrumpio la entrega al buzon", ex
-            );
+            throw new IllegalStateException("Se interrumpio la entrega al buzon", ex);
         }
+    }
+
+    /**
+     * Se conserva para que otros usos anteriores sigan compilando.
+     */
+    public void entregar(String remitente, String contenido) {
+        entregar(contenido);
     }
 
     public String recibir(long esperaMs) throws InterruptedException {

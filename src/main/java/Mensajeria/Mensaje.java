@@ -20,9 +20,14 @@ public class Mensaje {
 
     // Constructor utilizado por el cliente
     public Mensaje(String destinatario, String contenido) {
-        this.tipo = TipoMensaje.NORMAL;
-        this.destinatario = destinatario;
-        this.contenido = contenido;
+        this(TipoMensaje.NORMAL, destinatario, contenido);
+    }
+
+    /** Permite que Broker y GestorDirectorio envien mensajes administrativos. */
+    public Mensaje(TipoMensaje tipo, String destinatario, String contenido) {
+        this.tipo = java.util.Objects.requireNonNull(tipo, "tipo");
+        this.destinatario = java.util.Objects.requireNonNull(destinatario, "destinatario");
+        this.contenido = java.util.Objects.requireNonNull(contenido, "contenido");
     }
 
     // Constructor interno para reconstruir mensajes recibidos
@@ -64,6 +69,14 @@ public class Mensaje {
 
     String getRemitente() {
         return remitente;
+    }
+
+    String getIpRemitente() {
+        return ipRemitente;
+    }
+
+    int getPuertoRemitente() {
+        return puertoRemitente;
     }
 
     String getIpDestinatario() {
